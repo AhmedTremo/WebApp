@@ -23,7 +23,7 @@ export default class Control extends Component {
           Choose an experiment
         </h2>
         <CardDeck>
-          <Card>
+          <Card border="info">
             <Card.Body>
               <Card.Title>Experiment 1</Card.Title>
               <Card.Text>
@@ -44,7 +44,7 @@ export default class Control extends Component {
               </Dropdown>
             </Card.Footer>
           </Card>
-          <Card>
+          <Card border="info">
             <Card.Body>
               <Card.Title>Experiment 2</Card.Title>
               <Card.Text>
@@ -66,7 +66,7 @@ export default class Control extends Component {
               </Dropdown>
             </Card.Footer>
           </Card>
-          <Card>
+          <Card border="info">
             <Card.Body>
               <Card.Title>Experiment 3</Card.Title>
               <Card.Text>
