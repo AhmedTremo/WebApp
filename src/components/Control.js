@@ -1,60 +1,85 @@
 import React, { Component } from "react";
-import { CardDeck, Card, Button } from "react-bootstrap";
+import { CardDeck, Card, Button, Dropdown } from "react-bootstrap";
+import bsCustomFileInput from "bs-custom-file-input";
+import FileInput from "./FileInput";
+import { Link } from "react-router-dom";
 
 export default class Control extends Component {
+  componentDidMount() {
+    bsCustomFileInput.init();
+  }
+
   render() {
     return (
       <div>
-        <h1
+        <h2
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: 40,
+            padding: 50,
           }}
         >
           Choose an experiment
-        </h1>
+        </h2>
         <CardDeck>
           <Card>
             <Card.Body>
               <Card.Title>Experiment 1</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                You can choose a path from a predefined set of paths.{" "}
               </Card.Text>
             </Card.Body>
-            <Button variant="primary">Let's go</Button>
+
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <Dropdown>
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  Choose a path
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="../results">Path 1</Dropdown.Item>
+                  <Dropdown.Item href="../results">Path 2</Dropdown.Item>
+                  <Dropdown.Item href="../results">Path 3</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Card.Footer>
           </Card>
           <Card>
             <Card.Body>
               <Card.Title>Experiment 2</Card.Title>
               <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.{" "}
+                You can choose the destination location that you want the
+                package to reach.{" "}
               </Card.Text>
             </Card.Body>
-            <Button variant="primary">Let's go</Button>
+
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <Dropdown>
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                  Choose a destination
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="../results">Destination 1</Dropdown.Item>
+                  <Dropdown.Item href="../results">Destination 2</Dropdown.Item>
+                  <Dropdown.Item href="../results">Destination 3</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Card.Footer>
           </Card>
           <Card>
             <Card.Body>
               <Card.Title>Experiment 3</Card.Title>
               <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
+                You can upload your own code to create the path that the package
+                will take from start to end.{" "}
               </Card.Text>
+              <FileInput />
             </Card.Body>
-            <Button variant="primary">Let's go</Button>
+
             <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <Link to="/results">
+                <Button variant="primary">Run the code</Button>
+              </Link>
             </Card.Footer>
           </Card>
         </CardDeck>
