@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import bgImage from "./images/cool-background.png";
-import bsCustomFileInput from "bs-custom-file-input";
 
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -11,7 +10,6 @@ import Control from "./components/Control";
 import Results from "./components/Results";
 
 function App() {
-  bsCustomFileInput.init();
   return (
     <Router>
       <div
