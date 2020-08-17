@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { CardDeck, Card, Button, Dropdown } from "react-bootstrap";
 import bsCustomFileInput from "bs-custom-file-input";
-import FileInput from "./FileInput";
+import FileUpload from "./FileUpload";
 import { Link } from "react-router-dom";
 
 export default class Control extends Component {
@@ -73,7 +73,7 @@ export default class Control extends Component {
                 You can upload your own code to create the path that the package
                 will take from start to end.{" "}
               </Card.Text>
-              <FileInput />
+              <FileUpload />
             </Card.Body>
 
             <Card.Footer>
