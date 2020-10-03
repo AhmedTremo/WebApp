@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import './login.css'
 import { Form, FormGroup, Button, Label, Input } from "reactstrap";
 import fire from "../config/fire";
+import { CardDeck, Card,  Dropdown } from "react-bootstrap";
+import bsCustomFileInput from "bs-custom-file-input";
+import FileUpload from "./FileUpload";
+import { Link } from "react-router-dom";
 class Login extends Component {
     constructor(props) {
         super(props)
@@ -57,6 +61,7 @@ class Login extends Component {
     render() {
         return (
           <div>
+            <div>
           <form onSubmit={this.handleSubmit}>
                 <Form className="login-form">
                   <h1 className="text-center">Industry 4.0</h1>
@@ -94,6 +99,54 @@ class Login extends Component {
                   </div>
                 </Form>
                 </form></div>
+                
+                
+                <h2
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: 50,
+                  }}
+                >
+                  Know more about our website
+                </h2>
+                <CardDeck>
+                <Card border="info">
+                    <Card.Body>
+                      <Card.Title center>Our project</Card.Title>
+                      <Card.Text>
+                      E-lab: The vision of the laboratory is dedicated to integrate electronics along with software to create a fully functional compare that will be auto controlled through our website
+                      {" "}
+                      </Card.Text>
+                    </Card.Body>
+        
+                    
+                  </Card>
+
+                  <Card border="info">
+                    <Card.Body>
+                      <Card.Title>Experiment information</Card.Title>
+                      <Card.Text>
+                       1- The user enters a location that they want the package to reach.{"\n"}
+                       <br></br>
+                      
+                       {"\n"}
+                       
+                       2- The Package moves in a specific path from start to destination location.{" "}
+                       <br></br>
+                       3- The user chooses the start point and the destination point.{" "}
+
+
+                      </Card.Text>
+                    </Card.Body>
+        
+                    
+                  </Card>
+                  
+                  
+                </CardDeck>
+              </div>
         )}}
   
 
