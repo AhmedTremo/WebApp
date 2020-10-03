@@ -3,11 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import bgImage from "./images/cool-background.png";
 
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+
 import Login from "./components/Login";
-import Control from "./components/Control";
-import Results from "./components/Results";
+import Register from "./components/Register";
+import Home from "./components/Home";
 
 
 function App() {
@@ -24,12 +23,12 @@ function App() {
         }}
       >
         <div className="container">
-          <Navbar />
-          <br />
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/control" component={Control} />
-          <Route path="/results" component={Results} />
+        
+         
+          <Route path="/" exact component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/home" component={Home} />
+          
         </div>
       </div>
     </Router>
