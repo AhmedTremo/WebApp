@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import bgImage from "../images/cool-background.png";
-import gif from '../images/92hY.gif';
-import Social from '../components/Social'
+
 import Navbar from "./Navbar";
 import Start from "./Start";
 import Control from "./Control";
