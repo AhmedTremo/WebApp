@@ -78,7 +78,7 @@ class Login extends Component {
                     else{
                       e.preventDefault()
                       fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>
-                      {window.location.href='http://localhost:3000/control';
+                      {window.location.href='http://localhost:3000/home';
                       }).catch((error)=>{
                         console.log(error);
                         alert('Please enter valid email and password');

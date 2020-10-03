@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import './login.css'
 import fire from "../config/fire";
-import { Form, FormGroup, Button, Label, Input, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from "reactstrap";
+import { Form, FormGroup, Button, Label, Input} from "reactstrap";
 class Register extends Component {
     constructor(props) {
         super(props)
@@ -84,7 +84,7 @@ class Register extends Component {
                     else{
                       e.preventDefault()
                       fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password).then((u)=>
-                      {window.location.href='http://localhost:3000/control';
+                      {window.location.href='http://localhost:3000/home';
                       }).catch((error)=>{
                         console.log(error);
                         alert('Please enter valid email and password');
