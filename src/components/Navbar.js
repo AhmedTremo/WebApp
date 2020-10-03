@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import fire from "../config/fire";
 
 export default class Navbar extends Component {
+  constructor(props) {
+    super(props)
+
+   
+    this.logout= this.logout.bind(this);
+   
+}
+  logout(){
+    fire.auth().signOut();
+    window.location.href='http://localhost:3000/';
+  }
   render() {
     return (
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -19,6 +31,9 @@ export default class Navbar extends Component {
               <Link to="/results" className="nav-link">
                 Results
               </Link>
+            </li>
+            <li className="navbar-item">
+              <button onClick={this.logout}>Logout</button>
             </li>
           </ul>
         </div>
