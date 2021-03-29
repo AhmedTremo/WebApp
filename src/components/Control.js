@@ -3,6 +3,7 @@ import { CardDeck, Card, Button, Dropdown } from "react-bootstrap";
 import bsCustomFileInput from "bs-custom-file-input";
 import FileUpload from "./FileUpload";
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default class Control extends Component {
   componentDidMount() {
@@ -12,6 +13,7 @@ export default class Control extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <h2
           style={{
             display: "flex",
