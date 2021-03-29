@@ -17,7 +17,7 @@ export default class Control extends Component {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: 50,
+            padding: 40,
           }}
         >
           Choose an experiment

@@ -8,7 +8,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Control from "./components/Control";
 import Results from "./components/Results";
-
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
         style={{
           backgroundImage: `url(${bgImage})`,
           width: "100vw",
-          height: "100vh",
+          height: "100%",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -30,6 +30,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/control" component={Control} />
           <Route path="/results" component={Results} />
+          <Footer />
         </div>
       </div>
     </Router>
