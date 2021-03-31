@@ -1,17 +1,26 @@
 import React, { Component } from "react";
-import axios from "axios";
-
-export default class Login extends Component {
+import "./login.css";
+import { Form, FormGroup, Button, Label, Input } from "reactstrap";
+import fire from "../config/fire";
+import { CardDeck, Card, Dropdown } from "react-bootstrap";
+import bsCustomFileInput from "bs-custom-file-input";
+import FileUpload from "./FileUpload";
+import { Link } from "react-router-dom";
+class Login extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-
     this.state = {
-      username: "",
-      users: [],
+      id: "",
+      email: "",
+      password: "",
+      token: "",
     };
+    this.login = this.login.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onChangeUsername(e) {
@@ -19,81 +28,134 @@ export default class Login extends Component {
       username: e.target.value,
     });
   }
-
-  onSubmit(e) {
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-    };
-
-    console.log(user);
-
-    axios
-      .post("http://localhost:5000/users/add", user)
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
-
+  onChangePassword(e) {
     this.setState({
-      username: "",
-    });
-
-    axios.get("http://localhost:5000/users/").then((response) => {
-      if (response.data.length > 0) {
-        this.setState({
-          users: response.data,
-        });
-      }
+      password: e.target.value,
     });
   }
-
-  userList() {
-    return this.state.users.map((currentUser) => {
-      return (
-        <tr key={currentUser._id}>
-          <td>{currentUser.username}</td>
-        </tr>
-      );
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value,
     });
+  }
+  genderhandler = (event) => {
+    this.setState({
+      gender: event.target.value,
+    });
+  };
+  login(e) {
+    e.preventDefault();
+    fire
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((u) => {})
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
     return (
       <div>
         <div>
-          <h3>Create new user</h3>
-          <form onSubmit={this.onSubmit}>
-            <div className="form-group">
-              <label>Username:</label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                value={this.state.username}
-                onChange={this.onChangeUsername}
-              />
-            </div>
-            <div className="form-group">
-              <input
+          <form onSubmit={this.handleSubmit}>
+            <Form className="login-form">
+              <h1 className="text-center">Industry 4.0</h1>
+              <h2 className="text-center">Welcome</h2>
+              <FormGroup>
+                <Label>Email</Label>
+                <Input
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChangeEmail}
+                  placeholder="Email"
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Password</Label>
+                <Input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                  placeholder="Password"
+                  required
+                />
+              </FormGroup>
+
+              <Button
                 type="submit"
-                value="Create User"
-                className="btn btn-primary"
-              />
-            </div>
+                className="btn-lg btn-dark btn-block"
+                onClick={(e) => {
+                  if (this.state.email === "" || this.state.password === "")
+                    alert("Enter your email and password");
+                  else {
+                    e.preventDefault();
+                    fire
+                      .auth()
+                      .signInWithEmailAndPassword(
+                        this.state.email,
+                        this.state.password
+                      )
+                      .then((u) => {
+                        window.location.href = "http://localhost:3000/start";
+                      })
+                      .catch((error) => {
+                        console.log(error);
+                        alert("Please enter valid email and password");
+                      });
+                  }
+                }}
+              >
+                Log in
+              </Button>
+              <div className="text-center">
+                <a href="/register">Sign up</a>
+              </div>
+            </Form>
           </form>
         </div>
-        <div>
-          <h3>Username:</h3>
-          <table className="table">
-            <thead className="thread-light">
-              <tr>
-                <th>Username</th>
-              </tr>
-            </thead>
-            <tbody>{this.userList()}</tbody>
-          </table>
-        </div>
+
+        <h2
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 50,
+          }}
+        >
+          Know more about our website
+        </h2>
+        <CardDeck>
+          <Card border="info">
+            <Card.Body>
+              <Card.Title center>Our project</Card.Title>
+              <Card.Text>
+                E-lab: The vision of the laboratory is dedicated to integrate
+                electronics along with software to create a fully functional
+                compare that will be auto controlled through our website{" "}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+
+          <Card border="info">
+            <Card.Body>
+              <Card.Title>Experiment information</Card.Title>
+              <Card.Text>
+                1- The user enters a location that they want the package to
+                reach.{"\n"}
+                <br></br>
+                {"\n"}
+                2- The Package moves in a specific path from start to
+                destination location. <br></br>
+                3- The user chooses the start point and the destination point.{" "}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </CardDeck>
       </div>
     );
   }
 }
+
+export default Login;

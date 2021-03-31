@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { CardDeck, Card } from "react-bootstrap";
 import conveyorGraph from "../images/conveyorGraph.jpeg";
 import ReactPlayer from "react-player";
+import Navbar from "../components/Navbar";
+
 
 export default class Results extends Component {
   render() {
     return (
       <div>
+        <Navbar />
         <h2
           style={{
             display: "flex",
@@ -29,7 +32,7 @@ export default class Results extends Component {
                 <img
                   src={conveyorGraph}
                   className="center"
-                  alt="Image of Conveyor Graph"
+                  alt="Conveyor Graph"
                   width="100%"
                 ></img>
               }

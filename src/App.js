@@ -3,12 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import bgImage from "./images/cool-background.png";
 
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
 import Login from "./components/Login";
+import Register from "./components/Register";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Start from "./components/Start";
 import Control from "./components/Control";
 import Results from "./components/Results";
-import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -24,14 +25,15 @@ function App() {
         }}
       >
         <div className="container">
-          <Navbar />
-          <br />
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
+          <Route path="/" exact component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/home" component={Home} />
+          <Route path="/start" component={Start} />
           <Route path="/control" component={Control} />
           <Route path="/results" component={Results} />
           <Footer />
         </div>
+        <Footer />
       </div>
     </Router>
   );
