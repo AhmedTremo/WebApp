@@ -4,6 +4,7 @@ import conveyorGraph from "../images/conveyorGraph.jpeg";
 import ReactPlayer from "react-player";
 import Navbar from "../components/Navbar";
 
+
 export default class Results extends Component {
   render() {
     return (

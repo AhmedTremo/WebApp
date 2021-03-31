@@ -31,6 +31,7 @@ function App() {
           <Route path="/start" component={Start} />
           <Route path="/control" component={Control} />
           <Route path="/results" component={Results} />
+          <Footer />
         </div>
         <Footer />
       </div>
